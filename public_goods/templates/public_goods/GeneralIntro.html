@@ -1,0 +1,50 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Инструкции
+{% endblock %}
+
+{% block content %}
+
+
+
+<div class="card bg-light m-3">
+    <div class="card-header">
+        Инструкции
+    </div>
+    <div class="card-body">
+
+        <ul class="list-group list-group-flush">
+             <li class="list-group-item  ">
+                В ходе этого исследования вам и другим {{ Constants.num_others }} участникам придется принимать несколько
+                 раз однотипное решение.
+            </li>
+            <li class="list-group-item  ">
+                Какое это будет решение вы узнаете на следующей странице.
+            </li>
+            <li class="list-group-item">
+                Это решение вам необходимо будет принять в течение {{ Constants.num_rounds }} периодов.
+            </li>
+            <li class="list-group-item">
+                В конце исследования <b><u><span class="text-danger">один</span></u></b> из этих периодов будет случайно выбран и
+                ваш бонус будет определен вашим доходом в этом периоде.
+            </li>
+            <li class="list-group-item">
+                        Этот доход будет выплачен вам в виде бонуса по курсу :
+                    </li>
+                    <li class="list-group-item text-center lead">
+                        100 очков  = 100 центов или 1$
+                    </li>
+
+
+
+
+        </ul>
+    </div>
+</div>
+
+
+    {% next_button %}
+
+{% endblock %}

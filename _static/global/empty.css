@@ -1,0 +1,46 @@
+
+.wrap {
+    font: 12px Arial, san-serif;
+}
+
+.likert {
+    list-style: none;
+    width: 100%;
+    margin: 0;
+    display: block;
+    border-bottom: 2px solid #efefef;
+}
+
+.likert:last-of-type {
+    border-bottom: 0;
+}
+
+.likert li:last-of-type {
+    font-style: italic;
+    color: #404040;
+}
+
+.likert:before {
+    content: '';
+    position: relative;
+    top: 11px;
+    left: 0%;
+    display: block;
+    background-color: #efefef;
+    height: 4px;
+    width: 85%;
+}
+
+
+.likert li input[type=radio] {
+    display: block;
+    position: relative;
+    top: 0;
+    left: 50%;
+    margin-left: -6px;
+}
+
+.likert li label {
+    width: 100%;
+    margin-top: 0.5rem;
+}

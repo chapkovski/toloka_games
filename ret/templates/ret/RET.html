@@ -1,0 +1,94 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block visibletitle %}
+
+{% endblock %}
+
+{% block content %}
+    <div>
+        <h4>Посчитайте сколько нулей (0) в этой таблице</h4>
+        <div class="d-flex align-items-center justify-content-center">
+            <table class="table table-sm border" id="task2">
+                <tbody>
+
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="form-row align-items-center">
+                <div class="input-group mb-3">
+                    <input type="number" id="answer" class="form-control" required name="answer"
+                           min="{{ min_digits }}" max="{{ max_digits }}"
+                    >
+                    <div class="input-group-append">
+                        <button class="answer btn btn-success" type="button">Послать ответ</button>
+                    </div>
+                </div>
+            </div>
+            <div>Верных ответов всего: <span class="num_correct">{{ player.num_correct }}</span></div>
+            <div>Неверных ответов всего: <span class="num_incorrect">{{ player.num_incorrect }}</span></div>
+        </div>
+    </div>
+{% endblock %}
+{% block scripts %}
+    <script>
+        $(document).ready(function () {
+
+
+        });
+
+    </script>
+
+
+    {% include 'ret/includes/work_channel.html' %}
+    {% include 'ret/includes/ret_instructions.html' %}
+{% endblock %}
+
+{% block styles %}
+
+    <style>
+        td {
+            border: black solid 1px;
+
+
+        }
+
+        table#task2 {
+            white-space: nowrap;
+            width: 1%;
+        }
+
+        @import url(http://fonts.googleapis.com/css?family=Lato:400,900); /* <-- Just for the demo, Yes I like pretty fonts... */
+
+        .square {
+            position: relative;
+            width: 10%;
+            padding-bottom: 10%; /* = width for a 1:1 aspect ratio */
+            margin: 1.66%;
+            background-color: #1E1E1E;
+            overflow: hidden;
+        }
+
+        .content {
+            position: absolute;
+            height: 90%; /* = 100% - 2*5% padding */
+            width: 90%; /* = 100% - 2*5% padding */
+            padding: 5%;
+
+        }
+
+        .numbers {
+            font-weight: 400;
+            font-family: 'Lato', verdana, sans-serif;
+            font-size: 40px;
+            color: white;
+        }
+    </style>
+
+{% endblock %}

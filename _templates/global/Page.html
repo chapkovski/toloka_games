@@ -1,0 +1,195 @@
+{% extends "otree/Base.html" %}
+{% load i18n %}
+{% load otree static %}
+{% comment %}
+NOTE:
+we should keep this page as simple as possible so that 'view source' is friendly
+i removed many linebreaks to make output HTML cleaner
+{% endcomment %}
+{% block body_main %}
+    <link rel='preload' href="https://unpkg.com/survey-core@1.8.72/modern.min.css" as="style"/>
+    <link rel="stylesheet" href="https://unpkg.com/survey-core@1.8.72/modern.min.css">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css"
+          as="style">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css">
+    <link rel="preload" as="script" href="{% static 'global/js/survey.jquery.min.js' %}">
+    <script src="{% static 'global/js/survey.jquery.min.js' %}"></script>
+    <link rel="preload" as="script" href="{% static 'global/js/showdown.min.js' %}">
+    <script src="{% static 'global/js/showdown.min.js' %}"></script>
+    {% block progress %}
+
+        <nav class="navbar navbar-light bg-light  d-flex fixed-top">
+
+            <div class="progress " style="height: 30px; flex-basis:100%">
+                <div class="progress-bar" role="progressbar" style="width: {{ progress }}%"
+                     aria-valuenow="{{ progress }}"
+                     aria-valuemin="0" aria-valuemax="100">
+                    <b> {{ progress }}%</b></div>
+            </div>
+
+
+        </nav>
+    {% endblock %}
+    <div class="otree-body container">
+        <h2 class="otree-title page-header">
+
+            <div class="d-none"> {% block index %}Страница {{ page_index }} из {{ maxpages }}.{% endblock %}</div>
+            {% block visibletitle %}{% endblock %}
+            <div class="d-none">{% block title %}{% endblock %}</div>
+        </h2>
+        {% if view.remaining_timeout_seconds != None %}
+            {% include 'otree/includes/TimeLimit.html' with form_element_id="form" %}
+        {% endif %}
+        {% if form.errors %}
+            <div class="otree-form-errors alert alert-danger">
+                {% blocktrans trimmed %}Пожалуйста, ответьте на вопрос.{% endblocktrans %}
+                {{ form.non_field_errors }}
+            </div>
+        {% endif %}{% if js_vars|default:False %}
+        <script>var js_vars = {{ js_vars|json }};</script>{% endif %}
+        <form class="otree-form" method="post" role="form" id="form" autocomplete="off">{% csrf_token %}
+            <div class="_otree-content">{% block content %}{% endblock %}</div>
+        </form>
+        <br/>
+{#        {% include 'global/footer.html' %}#}
+        {# need the default:False for projects with old MTurkLandingPage #}
+        {% if view.is_debug|default:False %}
+            <br>
+            {% include 'otree/includes/debug_info.html' %}
+        {% endif %}
+    </div>
+{% endblock %}
+{% block internal_scripts %}
+
+    {{ block.super }}
+    <script id="websocket-redirect" src="{% static 'otree/js/page-websocket-redirect.js' %}"
+            data-socket-url="{{ view.socket_url|safe }}"
+            data-redirect-url="{{ view.redirect_url|safe }}"
+            data-is-debug="{{ view.is_debug|default:"" }}"
+    ></script>
+    {% if view.remaining_timeout_seconds != None %}
+        {% include 'otree/includes/TimeLimit.js.html' %}
+    {% endif %}
+{% endblock %}
+
+{% block live %}
+    {% if view.live_method %}
+        <form id="liveform"></form>
+        <script src="{% static 'otree/js/live.js' %}" id="otree-live" data-socket-url="{{ view.live_url }}"></script>
+    {% endif %}
+{% endblock %}
+{% block global_styles %}
+    <style>
+        label.col-form-label {
+            font-weight: bold
+        }
+
+        label.btn.btn-default.btn-secondary.active {
+            color: #fff;
+            background-color: #0d6efd;
+            border-color: #0d6efd;
+        }
+
+        .btn-check:active + .btn-outline-primary, .btn-check:checked + .btn-outline-primary, .btn-outline-primary.active, .btn-outline-primary.dropdown-toggle.show, .btn-outline-primary:active {
+            color: #fff;
+            background-color: #0d6efd;
+            border-color: #0d6efd;
+        }
+
+        label.btn {
+            --blue: #007bff;
+            --indigo: #6610f2;
+            --purple: #6f42c1;
+            --pink: #e83e8c;
+            --red: #dc3545;
+            --orange: #fd7e14;
+            --yellow: #ffc107;
+            --green: #28a745;
+            --teal: #20c997;
+            --cyan: #17a2b8;
+            --white: #fff;
+            --gray: #6c757d;
+            --gray-dark: #343a40;
+            --primary: #007bff;
+            --secondary: #6c757d;
+            --success: #28a745;
+            --info: #17a2b8;
+            --warning: #ffc107;
+            --danger: #dc3545;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --breakpoint-xs: 0;
+            --breakpoint-sm: 576px;
+            --breakpoint-md: 768px;
+            --breakpoint-lg: 992px;
+            --breakpoint-xl: 1200px;
+            --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            --bs-blue: #0d6efd;
+            --bs-indigo: #6610f2;
+            --bs-purple: #6f42c1;
+            --bs-pink: #d63384;
+            --bs-red: #dc3545;
+            --bs-orange: #fd7e14;
+            --bs-yellow: #ffc107;
+            --bs-green: #198754;
+            --bs-teal: #20c997;
+            --bs-cyan: #0dcaf0;
+            --bs-white: #fff;
+            --bs-gray: #6c757d;
+            --bs-gray-dark: #343a40;
+            --bs-primary: #0d6efd;
+            --bs-secondary: #6c757d;
+            --bs-success: #198754;
+            --bs-info: #0dcaf0;
+            --bs-warning: #ffc107;
+            --bs-danger: #dc3545;
+            --bs-light: #f8f9fa;
+            --bs-dark: #212529;
+            --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+            font-family: var(--bs-font-sans-serif);
+            -webkit-text-size-adjust: 100%;
+            -webkit-tap-highlight-color: transparent;
+            caption-side: bottom;
+            border-collapse: collapse;
+            --bs-table-bg: transparent;
+            --bs-table-accent-bg: transparent;
+            --bs-table-striped-color: #212529;
+            --bs-table-striped-bg: rgba(0, 0, 0, 0.05);
+            --bs-table-active-color: #212529;
+            --bs-table-active-bg: rgba(0, 0, 0, 0.1);
+            --bs-table-hover-color: #212529;
+            --bs-table-hover-bg: rgba(0, 0, 0, 0.075);
+            box-sizing: border-box;
+            margin-bottom: .5rem;
+            white-space: nowrap;
+            background-image: none;
+            display: inline-block;
+            font-weight: 400;
+            line-height: 1.5;
+            text-align: center;
+            text-decoration: none;
+            vertical-align: middle;
+            user-select: none;
+            background-color: transparent;
+            border: 1px solid transparent;
+            padding: .375rem .75rem;
+            font-size: 1rem;
+            transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+            color: #0d6efd;
+            border-color: #0d6efd;
+            -webkit-box-flex: 0;
+            position: relative;
+            flex: 1 1 auto;
+            cursor: pointer;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            margin-left: -1px;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+    </style>
+
+{% endblock %}

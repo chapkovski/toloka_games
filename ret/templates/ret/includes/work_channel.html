@@ -1,0 +1,49 @@
+<script>
+    function liveRecv(data) {
+        var obj = data
+        console.log(obj);
+
+
+        $('table#task2').empty();
+        $.each(obj.task.body, function (i, row) {
+            cells = row.split('');
+            var tr = $('<tr>');
+            $.each(cells, function (j, cell) {
+                $('<td class="bord">').html(cell).appendTo(tr);
+            });
+            $('table#task2').append(tr);
+        });
+
+        $('span.num_correct').html(obj.num_correct);
+        $('span.num_incorrect').html(obj.num_incorrect);
+        {#            TODO: THe following for debug only!!#}
+        $('span.correct-answer').html(obj.task.correct_answer);
+    };
+    $(function () {
+        liveSend({})
+
+        $("button.answer").on("click", function () {
+            var $inp = $('input#answer');
+            var msg = {answer: parseInt($inp.val())}
+            liveSend(msg)
+            $inp.val('');
+            $("input#answer").focus();
+
+            ;
+        });
+
+        $("input#answer").keydown(function (event) {
+
+            if (event.keyCode == 13) {
+                event.preventDefault();
+                $("button.answer").click();
+
+                return false;
+            }
+        });
+        $("input#answer").on("focus", function () {
+            var tooltip_id = $(this).attr("aria-describedby");
+            $('#' + tooltip_id).empty();
+        });
+    });
+</script>

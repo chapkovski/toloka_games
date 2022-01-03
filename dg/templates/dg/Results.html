@@ -1,0 +1,46 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block visibletitle %}
+    Результаты
+{% endblock %}
+
+{% block content %}
+    <style>
+        .lg {
+            font-size: 1.5rem
+        }
+    </style>
+    <table class="table table-hover table-striped">
+        <tr>
+            <td>
+                Ваша роль:
+            </td>
+            <td>
+                <span class="badge badge-primary badge-pill lg">{{ player.desc_role }}</span>
+            </td>
+        </tr>
+
+
+        <tr>
+            {% if player.role == 'dictator' %}
+                <td>Вы послали участнику Б:</td>
+            {% else %}
+                <td>Участник А послал вам:</td>
+            {% endif %}
+            <td>{{ group.dg_decision }}</td>
+        </tr>
+        <tr>
+            <td> Ваш бонус в $:</td>
+            <td>
+                <span class="badge badge-primary badge-pill lg">{{ player.payoff_in_real_currency }}</span>
+            </td>
+        </tr>
+    </table>
+    <p></p>
+
+    {% next_button %}
+
+{% endblock %}
+
+

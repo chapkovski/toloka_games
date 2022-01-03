@@ -1,0 +1,15 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block visibletitle %}
+    Инструкции
+{% endblock %}
+
+{% block content %}
+    {% include 'ret/includes/ret_instructions.html' %}
+    <div class="text-danger my-3">
+        {% formfields %}
+    </div>
+    {% next_button %}
+
+{% endblock %}

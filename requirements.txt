@@ -1,0 +1,4 @@
+otree[mturk]==3.4.0
+psycopg2==2.8.6
+pandas
+django_user_agents

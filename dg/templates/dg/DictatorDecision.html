@@ -1,0 +1,15 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block visibletitle %}
+    Примите решение
+{% endblock %}
+
+{% block content %}
+    {% include 'dg/includes/role_alert.html' %}
+    {% formfields %}
+    {% next_button %}
+
+    {% include  'dg/includes/dg_instructions.html' %}
+
+{% endblock %}

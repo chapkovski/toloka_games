@@ -1,0 +1,41 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block visibletitle %}
+    Результаты. Период {{ view.round_number }} из {{ Constants.num_rounds }}
+{% endblock %}
+
+{% block content %}
+    <style>
+        .lg {
+            font-size: 1.5rem
+        }
+    </style>
+    <div class="card my-3">
+        <div class="card-body">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Вы выбрали в этом раунде:
+                    <span class="badge badge-primary badge-pill lg">{{ player.get_decision_display }}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Ваш партнер выбрал:
+                    <span class="badge badge-primary badge-pill lg">{{ player.other.get_decision_display }}</span>
+                </li>
+                <li class="list-group-item   text-center lead  ">
+                    <div>{{ player.outcome }}</div>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Ваш бонус в этом раунде:
+                    <span class="badge badge-primary badge-pill lg">{{ player.intermediary_payoff }}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Ваш бонус в $:
+                    <span class="badge badge-primary badge-pill lg">{{ player.current_payoff_in_real_currency }}</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    {% next_button %}
+{% endblock %}

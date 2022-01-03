@@ -1,0 +1,42 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block visibletitle %}
+    Финальные результаты
+{% endblock %}
+
+{% block content %}
+
+
+    <table class="table table-hover table-striped">
+        <thead>
+        <tr>
+            <th>Период</th>
+            <th>Ваш выигрыш</th>
+        </tr>
+        </thead>
+        {% for r in player.in_all_rounds %}
+            <tr>
+                <td>{{ r.round_number }}</td>
+                <td>{{ r.intermediary_payoff }}</td>
+            </tr>
+        {% endfor %}
+        <tr class="table-success">
+            <th>Случайно выбранный период:</th>
+            <th>{{ player.payable_round }}</th>
+        </tr>
+        <tr class="table-danger">
+            <th>Ваш бонус:</th>
+            <th>{{ player.payoff_in_real_currency }}</th>
+        </tr>
+
+    </table>
+
+
+    {% next_button %}
+
+
+
+
+
+{% endblock %}

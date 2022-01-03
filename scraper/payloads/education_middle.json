@@ -1,0 +1,19 @@
+{
+   "filter": {
+       "and": [
+
+           {
+               "or": [
+                   {
+                       "category": "profile",
+                       "key": "education",
+                       "operator": "EQ",
+                       "value": "HIGH"
+                   }
+               ]
+           }
+       ]
+   },
+   "adultContent": false,
+   "projectId": 56044
+}

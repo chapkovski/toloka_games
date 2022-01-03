@@ -1,0 +1,48 @@
+{% load otree %}
+
+<div class="card bg-light m-3">
+    <div class="card-header">
+        Инструкции
+    </div>
+    <div class="card-body">
+
+        <ul class="list-group list-group-flush">
+             <li class="list-group-item lead text-center">
+                Попробуйте подвигать слайдеры, чтобы понять возможные выигрыши вас и других участников вашей группы
+            </li>
+            <li class="list-group-item lead text-center">
+                {% include 'public_goods/includes/slider.html' %}
+            </li>
+            <li class="list-group-item">
+                В этом исследовании вы участвуете в группе из {{ Constants.players_per_group }}
+                участников. Каждый участник в начале периода получает {{ Constants.endowment }}.
+                Участники группы могут принять участие в общем проекте. Каждый участник решает сколько из начальной
+                суммы он готов вложить в проект.
+
+                Размер вклада в проект может быть любым от 0
+                до {{ Constants.endowment }}.
+            </li>
+            <li class="list-group-item">
+                Доход от проекта считается следующим образом:
+            </li>
+            <li class="list-group-item">
+                Вклады всех {{ Constants.players_per_group }} участников суммируются и умножаются
+                на {{ Constants.multiplier }}.
+            </li>
+            <li class="list-group-item">
+                Затем полученная сумма делится поровну между всеми {{ Constants.players_per_group }}
+                участниками.
+            </li>
+            <li class="list-group-item">
+                Тем самым ваш доход в каждом периоде равен вашему доходу от проекта <b>плюс</b> остаток изначально
+                полученной суммы, который вы не вложили в проект.
+            </li>
+            <li class="list-group-item">
+                Тем самым ваш доход в каждом периоде равен вашему доходу от проекта <b>плюс</b> остаток изначально
+                полученной суммы, который вы не вложили в проект.
+            </li>
+
+
+        </ul>
+    </div>
+</div>

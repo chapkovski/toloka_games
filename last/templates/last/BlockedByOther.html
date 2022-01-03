@@ -1,0 +1,41 @@
+{% extends "global/Page.html" %}
+
+
+{% block progress %}
+
+{% endblock %}
+
+
+{% block title %}
+
+{% endblock %}
+
+{% block content %}
+
+    <div class="card">
+        <div class="card-body">
+            <div class="lead text-center">
+                К сожалению, один из ваших партнеров вышел из исследования.
+            </div>
+            <div class="lead text-center">
+                Но вы все равно получите плату за участие!
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <div class="lead text-center">Ваш код
+                <div class="text-center"><span class="font-weight-bold display-4">{{ participant.code }}</span>
+                </div>
+            </div>
+            <div class="lead my-3  ">
+                Для того, чтобы задание считалось выполненным, пожалуйста скопируйте его и вставьте на страницу задания
+                в Толоке.
+
+            </div>
+        </div>
+    </div>
+
+    <button class="d-none">Next</button>
+{% endblock %}

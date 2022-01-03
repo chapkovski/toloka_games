@@ -1,0 +1,18 @@
+{
+   "filter": {
+       "and": [
+           {
+               "or": [
+                   {
+                       "category": "computed",
+                       "key": "region_by_phone",
+                       "operator": "IN",
+                       "value": 225
+                   }
+               ]
+           }
+       ]
+   },
+   "adultContent": false,
+   "projectId": 56044
+}

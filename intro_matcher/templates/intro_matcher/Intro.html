@@ -1,0 +1,47 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Добро пожаловать!
+{% endblock %}
+
+{% block content %}
+
+    <div class="card my-3">
+        <div class="card-body">
+            <div class="card-text">
+                <ul class="list-group list-group-flush">
+
+
+                    <li class="list-group-item">
+                        В течение этого исследования вы будете взаимодействовать <b>в реальном времени</b> с другими
+                        случайно выбранными участниками Толоки.
+                    </li>
+                    <li class="list-group-item">
+                        Если один из этих участников покинет исследование, ваше участие <b>также завершится.</b>
+                        <u><b><span class="text-danger"> При этом вы все равно получите плату за участие!</span></b></u>
+                    </li>
+                    <li class="list-group-item">
+                        В ходе иследования вы и другие участники Толоки из одной с вами группы могут принимать решения,
+                        которые влияют на размер вашего бонуса.
+                    </li>
+
+                    <li class="list-group-item">
+                        Ваши заработки в ходе исследования измеряются в очках, и в конце исследования обмениваются по курсу:
+                    </li>
+                    <li class="list-group-item text-center lead">
+                        100 очков  = 100 центов или 1$
+                    </li>
+
+
+
+                </ul>
+
+            </div>
+        </div>
+    </div>
+    <div class="text-danger my-3">
+        {% formfields %}
+    </div>
+    {% next_button %}
+{% endblock %}

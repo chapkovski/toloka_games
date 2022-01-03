@@ -1,0 +1,18 @@
+{
+   "filter": {
+       "and": [
+           {
+               "or": [
+                   {
+                       "category": "profile",
+                       "key": "gender",
+                       "operator": "EQ",
+                       "value": "MALE"
+                   }
+               ]
+           }
+       ]
+   },
+   "adultContent": true,
+   "projectId": 56044
+}

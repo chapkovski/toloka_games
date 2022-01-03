@@ -1,0 +1,18 @@
+{
+   "filter": {
+       "and": [
+           {
+               "or": [
+                   {
+                       "category": "profile",
+                       "key": "citizenship",
+                       "operator": "EQ",
+                       "value": "RU"
+                   }
+               ]
+           }
+       ]
+   },
+   "adultContent": false,
+   "projectId": 56044
+}

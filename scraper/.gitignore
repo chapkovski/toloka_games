@@ -1,0 +1,9 @@
+.env
+.DS_Store
+.idea/
+.idea
+.idea/*
+data/*
+logs/*
+!data/.gitkeep
+!logs/.gitkeep

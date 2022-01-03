@@ -1,0 +1,29 @@
+{
+   "filter": {
+       "and": [
+           {
+               "or": [
+                   {
+                       "category": "profile",
+                       "key": "languages",
+                       "operator": "IN",
+                       "value": "EN"
+                   }
+               ]
+           },
+           {
+               "or": [
+                   {
+                       "category": "profile",
+                       "key": "languages",
+                       "operator": "NOT_IN",
+                       "value": "RU"
+                   }
+               ]
+           }
+
+       ]
+   },
+   "adultContent": false,
+   "projectId": 56044
+}

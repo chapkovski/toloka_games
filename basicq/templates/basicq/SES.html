@@ -1,0 +1,17 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Questionnaire
+{% endblock %}
+
+{% block content %}
+    {% formfield player.age label=age %}
+    {% formfield player.gender label=gender %}
+    {% if ru %}
+        <button class="btn btn-primary">Далее</button>
+    {% else %}
+        <button class="btn btn-primary">Next</button>
+    {% endif %}
+
+{% endblock %}

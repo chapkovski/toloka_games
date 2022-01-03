@@ -1,0 +1,36 @@
+<div id='fulltime' class='d-none'>{{start_time}}</div>
+<div class="card">
+    <div class="card-body p-4">
+        <ul class="list-group list-group-flush ">
+            <li class="list-group-item">
+                <h3 class='text-center' id='dataheader'>Исследование начнется в <span
+                        id='hours_minutes'></span> </h3>
+                <div id='countcontainer' class='lead text-center   my-2 fw-bold'>
+                    До того момента как вы сможете увидеть ссылку осталось: <span
+                        class='bg-primary badge  rounded-pill badge-primary badge-pill lg' id="clock"></span>
+                </div>
+                <div class='text-center lead'><i>Если вы пройдете по ссылке до этого времени - будьте готовы
+                    подождать!</i></div>
+                    <div class='text-center lead fw-bold text-danger'><i>Если вы пройдете по ссылке ПОСЛЕ этого времени - вы не сможете принять участие в исследовании</i></div>
+            </li>
+            <li class="list-group-item">Дайте знать, если у вас будут какие-либо вопросы или технические сложности через
+                сообщения Yandex.Toloka или по e-mail: <a href="mailto:fchapkovskiy@hse.ru" target="_blank"
+                                                          rel="noopener noreferrer">fchapkovskiy@hse.ru</a>.
+            </li>
+
+                <div id="linkdiv" class="d-none lead text-center ">   <li class="list-group-item my-3  ">
+                    <b>Ровно в <span id='watch_time'></span>
+                    </b> пройдите по <a href={{session_url}} target="_blank" id="assignmentlink">этой ссылке</a> и
+                    ответьте на вопросы.     </li>
+                </div>
+
+             <li class="list-group-item my-3  ">В конце исследования вы получите код, который необходимо ввести ниже, чтобы задание считалось
+            выполненным.
+        </li>
+        </ul>
+
+        <div class='text-center'>
+            {{field type="input" name="otree_code" width="60%" placeholder="Введите код, полученный по ссылке"}}
+        </div>
+    </div>
+</div>

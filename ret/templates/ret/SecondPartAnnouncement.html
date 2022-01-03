@@ -1,0 +1,12 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block visibletitle %}
+    Вторая часть
+{% endblock %}
+
+{% block content %}
+    Сейчас начинается вторая часть исследования. Нажмите "Далее", чтобы продолжить.
+    {% next_button %}
+
+{% endblock %}

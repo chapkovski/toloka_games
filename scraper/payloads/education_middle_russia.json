@@ -1,0 +1,28 @@
+{
+   "filter": {
+       "and": [
+           {
+               "or": [
+                   {
+                       "category": "computed",
+                       "key": "region_by_ip",
+                       "operator": "IN",
+                       "value": 225
+                   }
+               ]
+           },
+           {
+               "or": [
+                   {
+                       "category": "profile",
+                       "key": "education",
+                       "operator": "EQ",
+                       "value": "HIGH"
+                   }
+               ]
+           }
+       ]
+   },
+   "adultContent": false,
+   "projectId": 56044
+}

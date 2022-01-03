@@ -1,0 +1,42 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Thank you for the participation
+{% endblock %}
+
+{% block content %}
+    {% if toloka %}
+        <div class="card">
+            <div class="card-body">
+                <div class="lead text-center">Ваш код
+                    <div class="text-center"><span class="font-weight-bold display-4">{{ participant.code }}</span>
+                    </div>
+                </div>
+                <div class="lead my-3  ">
+                    Для того, чтобы задание считалось выполненным, пожалуйста скопируйте его и вставьте на страницу
+                    задания в Толоке.
+
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="card my-3">
+            <div class="card-body">
+                <div class="lead text-center"> Your code
+                    <div class="text-center"><span class="font-weight-bold display-4">{{ participant.code }}</span>
+                    </div>
+                </div>
+                <div class="lead my-3  ">
+                    Paste this code in mTurk.
+                </div>
+            </div>
+        </div>
+
+    {% endif %}
+
+
+
+{% endblock %}
+
+

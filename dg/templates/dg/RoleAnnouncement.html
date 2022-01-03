@@ -1,0 +1,32 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Page title
+{% endblock %}
+
+{% block content %}
+    <table class="table table-stripped table-hover">
+        <tr>
+            <th>Ваша продуктивность на этапе 1:</th>
+            <th>{{ player.productivity }}</th>
+        </tr>
+        <tr>
+            <th>Продуктивность второго участника на этапе 1:</th>
+            <th>{{ player.other.productivity }}</th>
+        </tr>
+        <tr>
+            <td class="text-center font-weight-bold" colspan="2">Тот участник, чья продуктивность выше, становится
+                участником А. Если оба участника сделали одинаковое число заданий, то участник А выбирается случайным образом.
+
+            </td>
+        </tr>
+        <tr class="table-success">
+            <th>Ваша роль:</th>
+            <th class="text-danger" style="font-size: 1.5em">{{ player.desc_role }}</th>
+        </tr>
+    </table>
+   {% include  'dg/includes/dg_instructions.html' %}
+    {% next_button %}
+
+{% endblock %}

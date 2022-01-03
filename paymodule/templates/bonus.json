@@ -1,0 +1,12 @@
+{
+  "user_id": "{{user_id}}",
+  "amount": "{{amount}}",
+  "public_title": {
+    "EN": "{{title}}",
+    "RU": "{{title}}"
+  },
+  "public_message": {
+    "EN": "{{message}}",
+    "RU": "{{message}}"
+  }
+}

@@ -1,0 +1,77 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block visibletitle %}
+    Результаты. Период {{ view.round_number }} из {{ Constants.num_rounds }}
+{% endblock %}
+
+{% block content %}
+
+    <style>
+        .lg {
+            font-size: 1.5rem
+        }
+    </style>
+    <table class="table table-hover table-striped">
+        <tr>
+            <td>
+                Ваш вклад:
+            </td>
+            <td>
+                <span class="badge badge-primary badge-pill lg">{{ player.contribution }}</span>
+            </td>
+        </tr>
+        <tr>
+            <td>Вклад других участников</td>
+            <td></td>
+        </tr>
+        {% for p in player.get_others_in_group %}
+            <tr>
+                <td></td>
+                <td>{{ p.contribution }}</td>
+            </tr>
+        {% endfor %}
+
+        <tr>
+            <td>Общая сумма вклада:</td>
+            <td>{{ group.total_contribution }}</td>
+        </tr>
+
+
+        <tr>
+            <td>Общая прибыль от проекта:</td>
+            <td>{{ total_earnings }}</td>
+        </tr>
+        <tr>
+            <td>Ваша прибыль от проекта:</td>
+            <td>
+                <span class="badge badge-primary badge-pill lg">    {{ group.individual_share }}</span>
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>Всего в этом периоде вы заработали:</td>
+            <td>
+                 <span class="badge badge-danger badge-pill lg">
+                     {{ player.intermediary_payoff }}
+                 </span>
+            </td>
+        </tr>
+
+        <tr>
+            <td> Ваш возможный бонус в $:</td>
+            <td>
+                <span class="badge badge-primary badge-pill lg">{{ player.current_payoff_in_real_currency }}</span>
+            </td>
+        </tr>
+    </table>
+    <p></p>
+
+    {% next_button %}
+
+
+    {% include Constants.instructions_template %}
+
+
+{% endblock %}

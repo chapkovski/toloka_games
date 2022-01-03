@@ -1,0 +1,120 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+
+{% endblock %}
+
+
+{% block content %}
+    <style>
+        .sv_row div div div  {
+            width: 100%!important;
+        }
+
+        fieldset {
+            display: flex !important;
+        }
+
+        label.btn.btn-default.btn-secondary.active {
+            background: yellow;
+            color: black;
+        }
+
+        .sv_q_rating_min_text span.sv-string-viewer, .sv_q_rating_max_text span.sv-string-viewer {
+            color: black;
+        }
+
+    </style>
+
+
+    <div id="surveyElement" style="display:inline-block;width:100%;"></div>
+    <div id="surveyResult"></div>
+    <input type="hidden" id="surveyholder" name="surveyholder">
+    <script>
+        Survey.defaultBootstrapCss.navigationButton = "btn-primary btn-lg";
+        Survey
+            .StylesManager
+            .applyTheme("bootstrap");
+        const reqtext = 'Пожалуйста, ответьте на этот вопрос'
+        var json = {
+            requiredText: '',
+
+            showQuestionNumbers: "off",
+            showCompletedPage: false,
+            completeText: "Далее",
+            questions: [
+                {
+                    isRequired: true,
+                    requiredErrorText: reqtext,
+                    "type": "radiogroup",
+                    "name": "general_trust",
+                    "title": "Если говорить в целом, Вы считаете, что большинству людей можно доверять или нужно быть очень осторожными в отношениях с людьми?",
+                    choices: [
+                        {value: 1, text: 'Большинству можно доверять'},
+                        {value: 2, text: 'Нужно быть очень осторожными в отношениях с людьми'},
+                    ]
+                },
+                {
+                    isRequired: true,
+                    requiredErrorText: reqtext,
+                    "type": "rating",
+                    "name": "general_risk",
+                    "title": "Укажите, пожалуйста, насколько Вы в целом любите рисковать",
+                    "rateMax": 10,
+                    "minRateDescription": "Я совершенно не готов рисковать",
+                    "maxRateDescription": "Я охотно иду на риск"
+                },
+                {
+                    isRequired: true,
+                    requiredErrorText: reqtext,
+                    "type": "rating",
+                    "name": "religion",
+                    "title": "Насколько сильно вы верите в существование Бога? (укажите свой ответ в диапазоне от 0 = совсем нет до 10 = очень сильно)",
+                    "rateMax": 10,
+                    "minRateDescription": "Совсем нет",
+                    "maxRateDescription": "Очень сильно"
+                },
+                {
+                    isRequired: true,
+                    requiredErrorText: reqtext,
+                    "type": "rating",
+                    "name": "political",
+                    "title": " Ниже представлена 10-балльная шкала, на которой политические взгляды, которых могут придерживаться люди, расположены от крайне либеральных (слева) до крайне консервативных (справа). Куда бы вы поставили себя на этой шкале?",
+                    "rateMax": 10,
+                    "minRateDescription": "Крайне либеральные",
+                    "maxRateDescription": "Крайне консервативные"
+                },
+
+
+            ]
+        };
+
+        window.survey = new Survey.Model(json);
+
+        survey
+            .onComplete
+            .add(function (sender) {
+                document
+                $('#surveyholder').val(JSON.stringify(sender.data, null, 3))
+                $('#form').submit()
+                ;
+            });
+        survey
+    .onUpdateQuestionCssClasses
+    .add(function (survey, options) {
+        var classes = options.cssClasses
+
+        classes.root = "sq-root";
+        classes.title = "sq-title"
+        {#classes.item = "sq-item";#}
+        {#classes.label = "sq-label";#}
+
+
+    });
+        $("#surveyElement").Survey({model: survey});
+        ;
+    </script>
+
+
+{% endblock %}

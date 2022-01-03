@@ -1,0 +1,76 @@
+{% load otree %}
+
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.css'>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.min.js'></script>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div>
+                Если вы вкладываете в проект <span id="ownsend"></span> {{ Constants.currency_name }}:
+
+            </
+            >
+            <div id="slider"></div>
+
+        </div>
+
+        <div>а оставшиеся 2 участника вкладывают <span id="othersend"></span> {{ Constants.currency_name }}:</div>
+        <div id="slider2"></div>
+        <div>То ваш доход составит: <b><span id='ownpayoff'>100</span> {{ Constants.currency_name }}</b></div>
+        <div>Средний доход остальных участников составит: <b><span id='otherpayoff'>100</span> {{ Constants.currency_name }}</b></div>
+
+    </div>
+</div>
+</div>
+
+<script>
+    const currency_name = 'очков'
+    var slider = document.getElementById("slider");
+    var slider2 = document.getElementById("slider2");
+    var coef = {{Constants.multiplier|json}};
+    var endowment = {{ Constants.endowment|json }};
+    const group_size = {{ Constants.players_per_group }};
+    const others_size = group_size - 1;
+    const updPayoffs = function (egoinput, alterinput) {
+        const totalContribution = egoinput + alterinput * others_size;
+        const totalProfit = totalContribution * coef;
+        const individualShare = totalProfit / group_size;
+        const ownProfit = endowment - egoinput + individualShare;
+        const alterProfit = endowment - alterinput + individualShare;
+        $("#ownpayoff").html(ownProfit.toFixed(0));
+        $("#otherpayoff").html(alterProfit.toFixed(0));
+    };
+    noUiSlider.create(slider, {
+        start: [0],
+        step: 10,
+        connect: true,
+        range: {
+            min: 0,
+            max: endowment
+        }
+    });
+
+    noUiSlider.create(slider2, {
+        start: [0],
+        step: 10,
+        connect: true,
+        range: {
+            min: 0,
+            max: endowment
+        }
+    });
+    slider.noUiSlider.on("update", function (values, handle) {
+        const firstSent = parseInt(values[handle]);
+        const secondSent = parseInt(slider2.noUiSlider.get());
+        $("#ownsend").html(firstSent);
+        updPayoffs(firstSent, secondSent);
+    });
+
+    slider2.noUiSlider.on("update", function (values, handle) {
+        const firstSent = parseInt(slider.noUiSlider.get());
+        const secondSent = parseInt(values[handle]);
+        $("#othersend").html(secondSent);
+        updPayoffs(firstSent, secondSent);
+    });
+
+</script>

@@ -1,0 +1,68 @@
+.btn-scale {
+    min-width: 44px;
+    width: 6%;
+    text-align: center;
+    font-weight: bold;
+    color: black;
+    font-family: 'Lato', sans-serif;
+    background-color: lightgray;
+}
+
+.btn-scale:hover {
+    background-color: #2CDE00;
+}
+
+.btn-scale-checked {
+    background-color: blue;
+    color: white !important;
+}
+
+.btn-scale-checked:hover {
+    background-color: blue !important;
+    color: white !important;
+}
+
+.likert-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.row-likert-wrapper {
+    justify-content: center;
+    align-items: center;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    padding: 5px;
+    margin-left:0px;
+    margin-right:0px;
+}
+
+.likert-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ flex-grow: 1;
+    flex-basis: 100px;
+    padding: 5px;
+}
+
+.chart-scale {
+    display: flex;
+    min-width: 475px;
+}
+.chart-scale button {
+    margin-left:4px;
+}
+.likert-left-header{
+
+    margin-right:10px;
+}
+.likert-right-header{
+
+    margin-left:10px;
+}
+.likert-header.likert-right-header {
+    justify-content: left;
+}

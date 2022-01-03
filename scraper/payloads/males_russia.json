@@ -1,0 +1,29 @@
+{
+   "filter": {
+       "and": [
+           {
+               "or": [
+                   {
+                       "category": "profile",
+                       "key": "gender",
+                       "operator": "EQ",
+                       "value": "MALE"
+                   }
+               ]
+           },
+            {
+               "or": [
+                   {
+                       "category": "computed",
+                       "key": "region_by_ip",
+                       "operator": "IN",
+                       "value": 225
+                   }
+               ]
+           }
+
+       ]
+   },
+   "adultContent": true,
+   "projectId": 56044
+}

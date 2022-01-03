@@ -1,0 +1,46 @@
+{% load otree %}
+
+<div class="card bg-light m-3">
+    <div class="card-header">
+        Инструкции
+    </div>
+    <div class="card-body">
+
+        <ul class="list-group list-group-flush">
+
+
+            <li class="list-group-item">
+                Вам предстоит со вторым участником сыграть в "Камень-Ножницы-Бумагу".
+            </li>
+
+            <li class="list-group-item">
+                Правила игры просты:
+            </li>
+            <li class="list-group-item">
+                Вы и второй участник должны выбрать между камнем, ножницей и бумагой.
+            </li>
+            <li class="list-group-item">
+                Победитель выбирается по следующему правилу:
+            </li>
+            <li class="list-group-item">
+                - Камень побеждает Ножницы.
+            </li>
+            <li class="list-group-item">
+                - Ножницы побеждают Бумагу.
+            </li>
+            <li class="list-group-item">
+                - Бумага побеждает Камень.
+            </li>
+
+            <li class="list-group-item">
+                - Ничья происходит если два участника делают одинаковый выбор.
+            </li>
+            <li class="list-group-item">
+                Победитель получает {{ Constants.win }}. Проигравший получает {{ Constants.loss }}. В случае ничьей
+                каждый участник получает {{ Constants.tie }}.
+            </li>
+
+
+        </ul>
+    </div>
+</div>
