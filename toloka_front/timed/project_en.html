@@ -1,0 +1,36 @@
+<div id='fulltime' class='d-none'>{{start_time}}</div>
+<div class="card">
+    <div class="card-body p-4">
+        <ul class="list-group list-group-flush ">
+            <li class="list-group-item">
+                <h3 class='text-center' id='dataheader'>The study begins at <span
+                        id='hours_minutes'></span> </h3>
+                <div id='countcontainer' class='lead text-center   my-2 fw-bold'>
+                    Until you can see the link left: <span
+                        class='bg-primary badge  rounded-pill badge-primary badge-pill lg' id="clock"></span>
+                </div>
+                <div class='text-center lead'><i>If you follow the link before that time, be prepared to
+                    to wait!</i></div>
+                    <div class='text-center lead fw-bold text-danger'><i>If you click the link AFTER that time, you will not be able to participate in the study</i></div>
+            </li>
+            <li class="list-group-item">Let me know if you have any questions or technical difficulties via
+                Yandex.Toloka messages or by e-mail: <a href="mailto:fchapkovskiy@hse.ru" target="_blank"
+                                                          rel="noopener noreferrer">fchapkovskiy@hse.ru</a>.
+            </li>
+
+                <div id="linkdiv" class="d-none lead text-center ">   <li class="list-group-item my-3  ">
+                    <b>Exactly at <span id='watch_time'></span>
+                    </b> click on <a href={{session_url}} target="_blank" id="assignmentlink">this link</a> and
+                    answer the questions.    </li>
+                </div>
+
+             <li class="list-group-item my-3  ">At the end of the study, you will receive a code, which must be entered below in order for the task to be considered
+            completed.
+        </li>
+        </ul>
+
+        <div class='text-center'>
+            {{field type="input" name="otree_code" width="60%" placeholder="Enter the code you got at the end of the study"}}
+        </div>
+    </div>
+</div>

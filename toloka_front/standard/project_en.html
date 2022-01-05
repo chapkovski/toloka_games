@@ -1,0 +1,26 @@
+<div class="card">
+    <div class="card-body p-4">
+        <ul class="list-group list-group-flush ">
+            <li class="list-group-item"> Follow the link and answer the questions.
+            </li>
+
+
+            <li class="list-group-item">
+                Let me know if you have any questions or technical difficulties via Yandex.Toloka messages or email:
+                <a href="mailto:fchapkovskiy@hse.ru" target="_blank" rel="noopener noreferrer">fchapkovskiy@hse.ru</a>.
+            </li>
+
+        </ul>
+        <div class='my-3'>
+            Follow <a href={{ session_url }} target="_blank" id="assignmentlink">this link</a> and answer the questions
+        </div>
+        <div>
+            At the end of the survey you will receive a code that must be entered below in order for the assignment to
+            be considered completed.
+        </div>
+        <div class='text-center'>
+            {{ field type="input" name="otree_code" width="60%" placeholder="Enter the code you got at the end of the study"}}
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,28 @@
+.task{
+  display:block;
+}
+.smaller div {
+  font-size:0.8rem;
+  font-style:italic;
+  margin-top:10px;
+}
+.input_size_M.input_state_empty .input__input, input[type=text]:focus, textarea:focus  {
+    padding-right: 8px;
+    border-radius: 25px;
+    min-height: 40px;
+    border: 1px solid dodgerblue;
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+  padding: 3px 0px 3px 3px;
+  margin: 5px 1px 3px 0px;
+  border: 1px solid rgba(81, 203, 238, 1);
+    text-align: center;
+}
+
+
+::-webkit-input-placeholder {
+  text-align: center;
+}
+
+:-moz-placeholder {
+  text-align: center;
+}
